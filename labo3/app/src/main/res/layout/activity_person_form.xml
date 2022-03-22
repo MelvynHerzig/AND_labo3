@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".PersonFormActivity">
+
+    <TextView
+        android:id="@+id/main_base_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:lines="1"
+        android:paddingBottom="10dp"
+        android:text="@string/main_base_title"
+        android:textColor="@color/title"
+        android:textSize="12sp"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:id="@+id/main_base_name_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_base_name_field"
+        app:layout_constraintBottom_toBottomOf="@id/main_base_name_field"
+        android:lines="1"
+        android:text="@string/main_base_name_title"
+        android:textColor="@color/title"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/main_base_firstname_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_base_firstname_field"
+        app:layout_constraintBottom_toBottomOf="@id/main_base_firstname_field"
+        android:lines="1"
+        android:text="@string/main_base_firstname_title"
+        android:textColor="@color/title"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/main_base_birthdate_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_base_birthdate_field"
+        app:layout_constraintBottom_toBottomOf="@id/main_base_birthdate_field"
+        android:lines="1"
+        android:text="@string/main_base_birthdate_title"
+        android:textColor="@color/title"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/main_base_nationality_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_base_nationality_spinner"
+        app:layout_constraintBottom_toBottomOf="@id/main_base_nationality_spinner"
+        android:lines="1"
+        android:text="@string/main_base_nationality_title"
+        android:textColor="@color/title"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/main_base_occupation_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_base_nationality_title"
+        android:lines="1"
+        android:text="@string/main_base_occupation_title"
+        android:textColor="@color/title"
+        android:textSize="12sp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_base_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.33"
+        android:orientation="vertical"/>
+
+    <EditText
+        android:id="@+id/main_base_name_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_base_title"
+        android:hint="@string/main_base_name_title"
+        android:inputType="text"
+        android:textSize="12sp"/>
+
+    <EditText
+        android:id="@+id/main_base_firstname_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_base_name_field"
+        android:hint="@string/main_base_firstname_title"
+        android:inputType="text"
+        android:textSize="12sp"/>
+
+    <EditText
+        android:id="@+id/main_base_birthdate_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/main_base_birthdate_button"
+        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_base_firstname_field"
+        android:inputType="text"
+        android:textSize="12sp"
+        android:focusable="false" />
+
+    <ImageButton
+        android:id="@+id/main_base_birthdate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/main_base_birthdate_field"
+        app:layout_constraintBottom_toBottomOf="@id/main_base_birthdate_field"
+        android:src="@drawable/cake" />
+
+    <Spinner
+        android:id="@+id/main_base_nationality_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_base_birthdate_field"
+        android:spinnerMode="dropdown"/>
+
+    <RadioButton
+        android:id="@+id/main_base_occupation_option_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_base_occupation_title"
+        android:text="@string/main_base_occupation_student"
+        android:scaleX="0.8"
+        android:scaleY="0.8"/>
+
+    <RadioButton
+        android:id="@+id/main_base_occupation_option_employee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/main_base_occupation_option_student"
+        app:layout_constraintBottom_toBottomOf="@id/main_base_occupation_option_student"
+        app:layout_constraintStart_toEndOf="@id/main_base_occupation_option_student"
+        android:text="@string/main_base_occupation_worker"
+        android:scaleX="0.8"
+        android:scaleY="0.8"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
