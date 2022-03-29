@@ -76,8 +76,8 @@
         app:flow_horizontalAlign="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additional_picture_title"
-        android:src="" />
+        app:layout_constraintTop_toBottomOf="@id/additional_picture_title" />
+        <!--android:src="" />-->
 
     <TextView
         android:id="@+id/additionnal_remarks_title"

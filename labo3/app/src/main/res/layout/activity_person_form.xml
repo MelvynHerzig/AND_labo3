@@ -137,12 +137,14 @@
 
     <Spinner
         android:id="@+id/main_base_nationality_spinner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:entries="@array/nationalities"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_base_birthdate_field"
-        android:spinnerMode="dropdown"/>
+        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+        app:layout_constraintTop_toBottomOf="@id/main_base_birthdate_field"  />
 
     <RadioButton
         android:id="@+id/main_base_occupation_option_student"
@@ -218,6 +220,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/title"
+        android:textSize="12sp"
         android:text="@string/main_specific_graduationyear_title"
         app:layout_constraintBottom_toBottomOf="@id/main_specific_graduationyear_field"
         app:layout_constraintStart_toStartOf="parent"
@@ -239,7 +242,7 @@
         android:id="@+id/group_specific_workers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:constraint_referenced_ids="main_specific_workers_title,
         main_specific_compagny_title,
         main_specific_sector_title,
@@ -259,13 +262,14 @@
         android:text="@string/main_specific_workers_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_graduationyear_title" />
+        app:layout_constraintTop_toBottomOf="@id/main_base_occupation_option_employee" />
 
     <TextView
         android:id="@+id/main_specific_compagny_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/title"
+        android:textSize="12sp"
         android:text="@string/main_specific_compagny_title"
         app:layout_constraintBottom_toBottomOf="@id/main_specific_compagny_field"
         app:layout_constraintStart_toStartOf="parent"
@@ -288,6 +292,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/title"
+        android:textSize="12sp"
         android:text="@string/main_specific_sector_title"
         app:layout_constraintBottom_toBottomOf="@id/main_specific_sector_spinner"
         app:layout_constraintStart_toStartOf="parent"
@@ -300,6 +305,7 @@
         android:layout_height="wrap_content"
         android:entries="@array/sectors"
         android:textSize="12sp"
+        android:spinnerMode="dropdown"
         app:layout_constraintStart_toStartOf="@id/main_base_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_specific_compagny_field" />
@@ -309,6 +315,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/title"
+        android:textSize="12sp"
         android:text="@string/main_specific_experience_title"
         app:layout_constraintBottom_toBottomOf="@id/main_specific_experience_field"
         app:layout_constraintStart_toStartOf="parent"
