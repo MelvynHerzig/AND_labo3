@@ -165,5 +165,165 @@
         android:scaleX="0.8"
         android:scaleY="0.8"/>
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_specific_students"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="main_specific_students_title,
+        main_specific_school_title,
+        main_specific_graduationyear_title,
+        main_specific_school_field,
+        main_specific_graduationyear_field" />
+
+    <TextView
+        android:id="@+id/main_specific_students_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textColor="@color/title"
+        android:textSize="12sp"
+        android:textAllCaps="true"
+        android:text="@string/main_specific_students_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_base_occupation_option_employee" />
+
+    <TextView
+        android:id="@+id/main_specific_school_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title"
+        android:textSize="12sp"
+        android:text="@string/main_specific_school_title"
+        app:layout_constraintBottom_toBottomOf="@id/main_specific_school_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintTop_toTopOf="@id/main_specific_school_field"
+        />
+
+    <EditText
+        android:id="@+id/main_specific_school_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/main_specific_school_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_specific_students_title"/>
+
+    <TextView
+        android:id="@+id/main_specific_graduationyear_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title"
+        android:text="@string/main_specific_graduationyear_title"
+        app:layout_constraintBottom_toBottomOf="@id/main_specific_graduationyear_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintTop_toTopOf="@id/main_specific_graduationyear_field" />
+
+    <EditText
+        android:id="@+id/main_specific_graduationyear_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/main_specific_graduationyear_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_specific_school_field" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_specific_workers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="main_specific_workers_title,
+        main_specific_compagny_title,
+        main_specific_sector_title,
+        main_specific_experience_title,
+        main_specific_compagny_field,
+        main_specific_sector_spinner,
+        main_specific_experience_field"/>
+
+    <TextView
+        android:id="@+id/main_specific_workers_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textColor="@color/title"
+        android:textSize="12sp"
+        android:textAllCaps="true"
+        android:text="@string/main_specific_workers_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_specific_graduationyear_title" />
+
+    <TextView
+        android:id="@+id/main_specific_compagny_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title"
+        android:text="@string/main_specific_compagny_title"
+        app:layout_constraintBottom_toBottomOf="@id/main_specific_compagny_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintTop_toTopOf="@id/main_specific_compagny_field" />
+
+    <EditText
+        android:id="@+id/main_specific_compagny_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/main_specific_compagny_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_specific_workers_title" />
+
+    <TextView
+        android:id="@+id/main_specific_sector_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title"
+        android:text="@string/main_specific_sector_title"
+        app:layout_constraintBottom_toBottomOf="@id/main_specific_sector_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintTop_toTopOf="@id/main_specific_sector_spinner" />
+
+    <Spinner
+        android:id="@+id/main_specific_sector_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/sectors"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_specific_compagny_field" />
+
+    <TextView
+        android:id="@+id/main_specific_experience_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title"
+        android:text="@string/main_specific_experience_title"
+        app:layout_constraintBottom_toBottomOf="@id/main_specific_experience_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+        app:layout_constraintTop_toTopOf="@id/main_specific_experience_field" />
+
+    <EditText
+        android:id="@+id/main_specific_experience_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/main_specific_experience_title"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_specific_sector_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
