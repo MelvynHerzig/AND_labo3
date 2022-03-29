@@ -107,16 +107,15 @@
             app:layout_constraintStart_toEndOf="@id/main_base_guideline"
             app:layout_constraintTop_toBottomOf="@id/main_base_firstname_field" />
 
-    <EditText
-        android:id="@+id/main_base_birthdate_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:focusable="false"
-        android:inputType="date"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@id/main_base_birthdate_button"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_base_firstname_field" />
+        <ImageButton
+            android:id="@+id/main_base_birthdate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_base_birthdate_title"
+            android:src="@drawable/cake"
+            app:layout_constraintBottom_toBottomOf="@id/main_base_birthdate_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_base_birthdate_field" />
 
         <TextView
             android:id="@+id/main_base_nationality_title"
@@ -336,41 +335,44 @@
             app:layout_constraintStart_toStartOf="@id/main_base_guideline"
             app:layout_constraintTop_toBottomOf="@id/main_specific_company_field" />
 
-    <TextView
-        android:id="@+id/additional_email_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/additional_email_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/additional_email_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additionnal_title"
-        app:layout_constraintTop_toTopOf="@id/additional_email_field" />
+        <TextView
+            android:id="@+id/main_specific_experience_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/main_specific_experience_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_specific_experience_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_specific_experience_field" />
 
-    <EditText
-        android:id="@+id/additional_email_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:autofillHints="emailAddress"
-        android:hint="@string/additional_email_title"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/additionnal_title" />
+        <EditText
+            android:id="@+id/main_specific_experience_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/main_specific_experience_title"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_sector_spinner" />
 
-    <TextView
-        android:id="@+id/additional_picture_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/additional_picture_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additional_email_field" />
+        <!-- Additionnal infos -->
+        <TextView
+            android:id="@+id/additional_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/additional_title"
+            android:textAllCaps="true"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_experience_field" />
 
         <TextView
             android:id="@+id/additional_email_title"
@@ -398,18 +400,16 @@
             app:layout_constraintStart_toEndOf="@id/main_base_guideline"
             app:layout_constraintTop_toBottomOf="@id/additional_title" />
 
-    <EditText
-        android:id="@+id/additionnal_remarks_field"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:autofillHints="Remarks"
-        android:inputType="textMultiLine|text"
-        android:overScrollMode="always"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:scrollHorizontally="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additionnal_remarks_title" />
+        <TextView
+            android:id="@+id/additional_picture_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/additional_picture_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additional_email_field" />
 
         <ImageView
             android:id="@+id/additional_picture_image"
