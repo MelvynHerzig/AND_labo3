@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Labo3">
         <activity
-            android:name=".Additional_details"
-            android:exported="false" />
-        <activity
             android:name=".PersonFormActivity"
             android:exported="true">
             <intent-filter>
