@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,244 +7,248 @@
     android:layout_margin="10dp"
     tools:context=".PersonFormActivity">
 
-    <TextView
-        android:id="@+id/main_base_title"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lines="1"
-        android:paddingBottom="10dp"
-        android:text="@string/main_base_title"
-        android:textAllCaps="true"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/main_base_name_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:lines="1"
-        android:text="@string/main_base_name_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_base_name_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_base_name_field" />
+        <TextView
+            android:id="@+id/main_base_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:paddingBottom="10dp"
+            android:text="@string/main_base_title"
+            android:textAllCaps="true"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/main_base_firstname_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:lines="1"
-        android:text="@string/main_base_firstname_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_base_firstname_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_base_firstname_field" />
+        <TextView
+            android:id="@+id/main_base_name_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/main_base_name_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_base_name_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_base_name_field" />
 
-    <TextView
-        android:id="@+id/main_base_birthdate_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:lines="1"
-        android:text="@string/main_base_birthdate_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_base_birthdate_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_base_birthdate_field" />
+        <TextView
+            android:id="@+id/main_base_firstname_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/main_base_firstname_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_base_firstname_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_base_firstname_field" />
 
-    <TextView
-        android:id="@+id/main_base_nationality_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:lines="1"
-        android:text="@string/main_base_nationality_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_base_nationality_spinner"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_base_nationality_spinner" />
+        <TextView
+            android:id="@+id/main_base_birthdate_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/main_base_birthdate_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_base_birthdate_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_base_birthdate_field" />
 
-    <TextView
-        android:id="@+id/main_base_occupation_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:lines="1"
-        android:paddingTop="15dp"
-        android:text="@string/main_base_occupation_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_base_nationality_title" />
+        <TextView
+            android:id="@+id/main_base_nationality_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/main_base_nationality_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_base_nationality_spinner"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_base_nationality_spinner" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/main_base_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.33" />
+        <TextView
+            android:id="@+id/main_base_occupation_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:paddingTop="15dp"
+            android:text="@string/main_base_occupation_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_base_nationality_title" />
 
-    <EditText
-        android:id="@+id/main_base_name_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/main_base_name_title"
-        android:inputType="text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_base_title" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/main_base_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
 
-    <EditText
-        android:id="@+id/main_base_firstname_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/main_base_firstname_title"
-        android:inputType="text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_base_name_field" />
+        <EditText
+            android:id="@+id/main_base_name_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/main_base_name_title"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_base_title" />
 
-    <EditText
-        android:id="@+id/main_base_birthdate_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:focusable="false"
-        android:inputType="text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@id/main_base_birthdate_button"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_base_firstname_field" />
+        <EditText
+            android:id="@+id/main_base_firstname_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/main_base_firstname_title"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_base_name_field" />
 
-    <ImageButton
-        android:id="@+id/main_base_birthdate_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/cake"
-        app:layout_constraintBottom_toBottomOf="@id/main_base_birthdate_field"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_base_birthdate_field" />
+        <EditText
+            android:id="@+id/main_base_birthdate_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/main_base_birthdate_button"
+            app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_base_firstname_field" />
 
-    <Spinner
-        android:id="@+id/main_base_nationality_spinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:entries="@array/nationalities"
-        android:spinnerMode="dropdown"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_base_birthdate_field" />
+        <ImageButton
+            android:id="@+id/main_base_birthdate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cake"
+            app:layout_constraintBottom_toBottomOf="@id/main_base_birthdate_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_base_birthdate_field" />
 
-    <RadioButton
-        android:id="@+id/main_base_occupation_option_student"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:text="@string/main_base_occupation_student"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_base_occupation_title" />
+        <Spinner
+            android:id="@+id/main_base_nationality_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/nationalities"
+            android:spinnerMode="dropdown"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_base_birthdate_field" />
 
-    <RadioButton
-        android:id="@+id/main_base_occupation_option_employee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:text="@string/main_base_occupation_worker"
-        app:layout_constraintBottom_toBottomOf="@id/main_base_occupation_option_student"
-        app:layout_constraintStart_toEndOf="@id/main_base_occupation_option_student"
-        app:layout_constraintTop_toTopOf="@id/main_base_occupation_option_student" />
+        <RadioButton
+            android:id="@+id/main_base_occupation_option_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="@string/main_base_occupation_student"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_base_occupation_title" />
 
-    <!-- Specific infos students -->
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_specific_students"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:constraint_referenced_ids="main_specific_students_title,
+        <RadioButton
+            android:id="@+id/main_base_occupation_option_employee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:text="@string/main_base_occupation_worker"
+            app:layout_constraintBottom_toBottomOf="@id/main_base_occupation_option_student"
+            app:layout_constraintStart_toEndOf="@id/main_base_occupation_option_student"
+            app:layout_constraintTop_toTopOf="@id/main_base_occupation_option_student" />
+
+        <!-- Specific infos students -->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_specific_students"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="main_specific_students_title,
         main_specific_school_title,
         main_specific_graduationyear_title,
         main_specific_school_field,
         main_specific_graduationyear_field" />
 
-    <TextView
-        android:id="@+id/main_specific_students_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:text="@string/main_specific_students_title"
-        android:textAllCaps="true"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_base_occupation_option_employee" />
+        <TextView
+            android:id="@+id/main_specific_students_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@string/main_specific_students_title"
+            android:textAllCaps="true"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_base_occupation_option_employee" />
 
-    <TextView
-        android:id="@+id/main_specific_school_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_specific_school_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_specific_school_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_specific_school_field" />
+        <TextView
+            android:id="@+id/main_specific_school_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_specific_school_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_specific_school_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_specific_school_field" />
 
-    <EditText
-        android:id="@+id/main_specific_school_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/main_specific_school_title"
-        android:inputType="text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_students_title" />
+        <EditText
+            android:id="@+id/main_specific_school_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/main_specific_school_title"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_students_title" />
 
-    <TextView
-        android:id="@+id/main_specific_graduationyear_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_specific_graduationyear_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_specific_graduationyear_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_specific_graduationyear_field" />
+        <TextView
+            android:id="@+id/main_specific_graduationyear_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_specific_graduationyear_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_specific_graduationyear_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_specific_graduationyear_field" />
 
-    <EditText
-        android:id="@+id/main_specific_graduationyear_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/main_specific_graduationyear_title"
-        android:inputType="text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_school_field" />
+        <EditText
+            android:id="@+id/main_specific_graduationyear_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/main_specific_graduationyear_title"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_school_field" />
 
-    <!-- Specific infos employees -->
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_specific_workers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:constraint_referenced_ids="main_specific_workers_title,
+        <!-- Specific infos employees -->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_specific_workers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="main_specific_workers_title,
         main_specific_compagny_title,
         main_specific_sector_title,
         main_specific_experience_title,
@@ -252,171 +256,174 @@
         main_specific_sector_spinner,
         main_specific_experience_field" />
 
-    <TextView
-        android:id="@+id/main_specific_workers_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:text="@string/main_specific_workers_title"
-        android:textAllCaps="true"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_graduationyear_field" />
+        <TextView
+            android:id="@+id/main_specific_workers_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@string/main_specific_workers_title"
+            android:textAllCaps="true"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_graduationyear_field" />
 
-    <TextView
-        android:id="@+id/main_specific_compagny_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_specific_compagny_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_specific_compagny_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_specific_compagny_field" />
+        <TextView
+            android:id="@+id/main_specific_compagny_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_specific_compagny_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_specific_compagny_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_specific_compagny_field" />
 
-    <EditText
-        android:id="@+id/main_specific_compagny_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/main_specific_compagny_title"
-        android:inputType="text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_workers_title" />
+        <EditText
+            android:id="@+id/main_specific_compagny_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/main_specific_compagny_title"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_workers_title" />
 
-    <TextView
-        android:id="@+id/main_specific_sector_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_specific_sector_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_specific_sector_spinner"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_specific_sector_spinner" />
+        <TextView
+            android:id="@+id/main_specific_sector_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_specific_sector_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_specific_sector_spinner"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_specific_sector_spinner" />
 
-    <Spinner
-        android:id="@+id/main_specific_sector_spinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:entries="@array/sectors"
-        android:spinnerMode="dropdown"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_compagny_field" />
+        <Spinner
+            android:id="@+id/main_specific_sector_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/sectors"
+            android:spinnerMode="dropdown"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_compagny_field" />
 
-    <TextView
-        android:id="@+id/main_specific_experience_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_specific_experience_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/main_specific_experience_field"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/main_specific_experience_field" />
+        <TextView
+            android:id="@+id/main_specific_experience_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_specific_experience_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/main_specific_experience_field"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/main_specific_experience_field" />
 
-    <EditText
-        android:id="@+id/main_specific_experience_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/main_specific_experience_title"
-        android:inputType="text"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_sector_spinner" />
+        <EditText
+            android:id="@+id/main_specific_experience_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/main_specific_experience_title"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_sector_spinner" />
 
-    <!-- Additionnal infos -->
-    <TextView
-        android:id="@+id/additionnal_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:lines="1"
-        android:singleLine="true"
-        android:text="@string/additional_title"
-        android:textAllCaps="true"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_specific_experience_field" />
+        <!-- Additionnal infos -->
+        <TextView
+            android:id="@+id/additionnal_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:singleLine="true"
+            android:text="@string/additional_title"
+            android:textAllCaps="true"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_specific_experience_field" />
 
-    <TextView
-        android:id="@+id/additional_email_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/additional_email_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/additional_email_input"
-        app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additionnal_title"
-        app:layout_constraintTop_toTopOf="@id/additional_email_input" />
+        <TextView
+            android:id="@+id/additional_email_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/additional_email_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/additional_email_input"
+            app:layout_constraintEnd_toStartOf="@id/main_base_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additionnal_title"
+            app:layout_constraintTop_toTopOf="@id/additional_email_input" />
 
-    <EditText
-        android:id="@+id/additional_email_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:autofillHints="emailAddress"
-        android:hint="@string/additional_email_title"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/main_base_guideline"
-        app:layout_constraintTop_toBottomOf="@id/additionnal_title" />
+        <EditText
+            android:id="@+id/additional_email_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:hint="@string/additional_email_title"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_base_guideline"
+            app:layout_constraintTop_toBottomOf="@id/additionnal_title" />
 
-    <TextView
-        android:id="@+id/additional_picture_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/additional_picture_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additional_email_input" />
+        <TextView
+            android:id="@+id/additional_picture_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/additional_picture_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additional_email_input" />
 
-    <ImageView
-        android:id="@+id/additional_picture_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/additional_picture_title"
-        android:src="@drawable/placeholder_selfie"
-        app:flow_horizontalAlign="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additional_picture_title" />
+        <ImageView
+            android:id="@+id/additional_picture_image"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
+            android:contentDescription="@string/additional_picture_title"
+            android:src="@drawable/placeholder_selfie"
+            app:flow_horizontalAlign="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additional_picture_title"
+            android:scaleType="centerCrop"/>
 
-    <TextView
-        android:id="@+id/additionnal_remarks_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/additional_remarks_title"
-        android:textColor="@color/title"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additional_picture_image" />
+        <TextView
+            android:id="@+id/additionnal_remarks_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/additional_remarks_title"
+            android:textColor="@color/title"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additional_picture_image" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:autofillHints="Remarks"
-        android:inputType="textMultiLine|text"
-        android:overScrollMode="always"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:scrollHorizontally="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additionnal_remarks_title" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:autofillHints="Remarks"
+            android:inputType="textMultiLine|text"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additionnal_remarks_title" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
