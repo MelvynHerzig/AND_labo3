@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:layout_margin="10dp"
     tools:context=".PersonFormActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -393,7 +394,7 @@
             android:layout_height="wrap_content"
             android:autofillHints="emailAddress"
             android:hint="@string/additional_email_title"
-            android:inputType="textEmailAddress"
+            android:inputType=" textEmailAddress"
             android:textColor="@color/title"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -413,14 +414,14 @@
 
         <ImageView
             android:id="@+id/additional_picture_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/additional_picture_title"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
             android:src="@drawable/placeholder_selfie"
             app:flow_horizontalAlign="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/additional_picture_title" />
+            app:layout_constraintTop_toBottomOf="@id/additional_picture_title"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/additional_remarks_title"
