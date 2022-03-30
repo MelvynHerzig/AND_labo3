@@ -1,6 +1,7 @@
 package com.and.labo3
 
 import android.app.DatePickerDialog
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -31,8 +32,7 @@ class PersonFormActivity : AppCompatActivity() {
 
     private lateinit var birthdayImageButton: ImageButton
 
-    private lateinit var workerOption: RadioButton
-    private lateinit var studentOption: RadioButton
+    private lateinit var occupationRadioButton: RadioGroup
 
     private lateinit var nationalitySpinner: Spinner
     private lateinit var specificSectorSpinner: Spinner
@@ -46,20 +46,18 @@ class PersonFormActivity : AppCompatActivity() {
         birthdayField = findViewById(R.id.main_base_birthdate_field)
         schoolField = findViewById(R.id.main_specific_school_field)
         graduationYearField = findViewById(R.id.main_specific_graduationyear_field)
-        companyField = findViewById(R.id.main_specific_compagny_field)
+        companyField = findViewById(R.id.main_specific_company_field)
         specificExperienceField = findViewById(R.id.main_specific_experience_field)
         emailField = findViewById(R.id.additional_email_field)
-        remarksField = findViewById(R.id.additionnal_remarks_field)
+        remarksField = findViewById(R.id.additional_remarks_field)
 
         studentsGroup = findViewById(R.id.group_specific_students)
         workersGroup = findViewById(R.id.group_specific_workers)
+        occupationRadioButton = findViewById(R.id.main_base_occupation_options)
 
         pictureImage = findViewById(R.id.additional_picture_image)
 
         birthdayImageButton = findViewById(R.id.main_base_birthdate_button)
-
-        workerOption = findViewById(R.id.main_base_occupation_option_employee)
-        studentOption = findViewById(R.id.main_base_occupation_option_student)
 
         nationalitySpinner = findViewById(R.id.main_base_nationality_spinner)
         specificSectorSpinner = findViewById(R.id.main_specific_sector_spinner)
@@ -83,6 +81,18 @@ class PersonFormActivity : AppCompatActivity() {
             )
 
             dpd.show()
+        }
+
+        occupationRadioButton.setOnCheckedChangeListener { _, id ->
+
+            workersGroup.visibility = View.GONE
+            studentsGroup.visibility = View.GONE
+
+            when(id){
+                R.id.main_base_occupation_option_student -> studentsGroup.visibility = View.VISIBLE
+                R.id.main_base_occupation_option_employee -> workersGroup.visibility = View.VISIBLE
+
+            }
         }
     }
 }

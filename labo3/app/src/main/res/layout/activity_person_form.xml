@@ -190,7 +190,7 @@
             android:id="@+id/group_specific_students"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             app:constraint_referenced_ids="main_specific_students_title,
             main_specific_school_title,
             main_specific_graduationyear_title,
@@ -265,7 +265,7 @@
             android:id="@+id/group_specific_workers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             app:constraint_referenced_ids="main_specific_workers_title,
             main_specific_company_title,
             main_specific_sector_title,
