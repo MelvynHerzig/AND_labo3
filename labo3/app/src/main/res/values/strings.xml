@@ -31,7 +31,7 @@
     <string name="main_specific_graduationyear_title">Année du diplôme</string>
 
     <string name="main_specific_workers_title">Données spécifiques (employé)</string>
-    <string name="main_specific_compagny_title">Entreprise</string>
+    <string name="main_specific_company_title">Entreprise</string>
     <string name="main_specific_sector_title">Secteur</string>
     <string name="main_specific_experience_title">Expérience (années)</string>
 
