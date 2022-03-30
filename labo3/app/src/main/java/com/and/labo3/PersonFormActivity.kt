@@ -5,18 +5,18 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
-import android.hardware.camera2.CameraCharacteristics
 import android.media.ExifInterface
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.Group
 import androidx.core.content.FileProvider
+import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,19 +38,24 @@ class PersonFormActivity : AppCompatActivity() {
     /**
      * Path of the image saved when taking the selfie.
      */
-    lateinit var selfiePath: String
+    private var selfiePath : String? = null
 
     /**
      * Reference on the image view to display selfie
      */
-    lateinit var selfieView : ImageView
+    lateinit var selfieView: ImageView
 
     /**
      * Request code given to intent when taking selfie
      */
     private val REQUEST_IMAGE_CAPTURE = 1
 
-    private var birthdayCalendar = Calendar.getInstance()
+    private var person: Person? = null
+
+    private var birthdayCalendar: Calendar = Calendar.getInstance()
+
+    private lateinit var okButton: Button
+    private lateinit var cancelButton: Button
 
     private lateinit var nameField: EditText
     private lateinit var firstnameField: EditText
@@ -67,14 +72,18 @@ class PersonFormActivity : AppCompatActivity() {
 
     private lateinit var birthdayImageButton: ImageButton
 
-    private lateinit var occupationRadioButton: RadioGroup
+    private lateinit var occupationRadioGroup: RadioGroup
 
     private lateinit var nationalitySpinner: Spinner
     private lateinit var specificSectorSpinner: Spinner
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_form)
+
+        okButton = findViewById(R.id.btn_ok)
+        cancelButton = findViewById(R.id.btn_cancel)
 
         nameField = findViewById(R.id.main_base_name_field)
         firstnameField = findViewById(R.id.main_base_firstname_field)
@@ -88,7 +97,7 @@ class PersonFormActivity : AppCompatActivity() {
 
         studentsGroup = findViewById(R.id.group_specific_students)
         workersGroup = findViewById(R.id.group_specific_workers)
-        occupationRadioButton = findViewById(R.id.main_base_occupation_options)
+        occupationRadioGroup = findViewById(R.id.main_base_occupation_options)
 
         selfieView = findViewById(R.id.additional_picture_image)
 
@@ -97,6 +106,27 @@ class PersonFormActivity : AppCompatActivity() {
         nationalitySpinner = findViewById(R.id.main_base_nationality_spinner)
         specificSectorSpinner = findViewById(R.id.main_specific_sector_spinner)
 
+        okButton.setOnClickListener {
+            createPerson()
+        }
+
+        cancelButton.setOnClickListener {
+            nameField.text.clear()
+            firstnameField.text.clear()
+            birthdayField.text.clear()
+            schoolField.text.clear()
+            graduationYearField.text.clear()
+            companyField.text.clear()
+            specificExperienceField.text.clear()
+            emailField.text.clear()
+            remarksField.text.clear()
+
+            occupationRadioGroup.clearCheck()
+
+            // TODO Remettre spinner a la valeur de base
+            //nationalitySpinner.
+            //specificSectorSpinner.
+        }
 
         selfieView.setOnClickListener {
             dispatchTakePictureIntent()
@@ -109,7 +139,7 @@ class PersonFormActivity : AppCompatActivity() {
                 { view, year, monthOfYear, dayOfMonth ->
 
                     // Display Selected date in textbox
-                    birthdayField.setText("$dayOfMonth.${monthOfYear+1}.$year")
+                    birthdayField.setText("$dayOfMonth.${monthOfYear + 1}.$year")
                     birthdayCalendar.set(Calendar.YEAR, year)
                     birthdayCalendar.set(Calendar.MONTH, monthOfYear)
                     birthdayCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -122,17 +152,18 @@ class PersonFormActivity : AppCompatActivity() {
             dpd.show()
         }
 
-        occupationRadioButton.setOnCheckedChangeListener { _, id ->
+        occupationRadioGroup.setOnCheckedChangeListener { _, id ->
 
             workersGroup.visibility = View.GONE
             studentsGroup.visibility = View.GONE
 
-            when(id){
+            when (id) {
                 R.id.main_base_occupation_option_student -> studentsGroup.visibility = View.VISIBLE
                 R.id.main_base_occupation_option_employee -> workersGroup.visibility = View.VISIBLE
 
             }
         }
+
     }
 
     /**
@@ -192,7 +223,10 @@ class PersonFormActivity : AppCompatActivity() {
 
                     // Huawei
                     takePictureIntent.putExtra("default_camera", "1")
-                    takePictureIntent.putExtra("default_mode", "com.huawei.camera2.mode.photo.PhotoMode")
+                    takePictureIntent.putExtra(
+                        "default_mode",
+                        "com.huawei.camera2.mode.photo.PhotoMode"
+                    )
 
 
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
@@ -207,22 +241,23 @@ class PersonFormActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         // In case of photo capture
-        if(requestCode == REQUEST_IMAGE_CAPTURE) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
 
             // Rotate the photo correctly in a coroutine
             // Source: https://www.geeksforgeeks.org/what-is-exifinterface-in-android/
             lifecycleScope.launch {
 
                 val originalSelfieFile = File(selfiePath)
-                val bitmapToDisplay : Bitmap?
+                val bitmapToDisplay: Bitmap?
 
-                if(originalSelfieFile.exists()){
+                if (originalSelfieFile.exists()) {
 
                     val originalBitmap = BitmapFactory.decodeFile(originalSelfieFile.absolutePath);
                     val exifInterface = ExifInterface(originalSelfieFile)
                     val selfieRotation = exifInterface.getAttributeInt(
                         ExifInterface.TAG_ORIENTATION,
-                        ExifInterface.ORIENTATION_UNDEFINED)
+                        ExifInterface.ORIENTATION_UNDEFINED
+                    )
                     val selfieRotationInDegrees: Int = exifToDegrees(selfieRotation)
 
                     // Making rotation matrix
@@ -232,7 +267,15 @@ class PersonFormActivity : AppCompatActivity() {
                     }
 
                     // Rotating to a new bitmap
-                    bitmapToDisplay = Bitmap.createBitmap(originalBitmap, 0, 0, originalBitmap.width, originalBitmap.height, matrix, false)
+                    bitmapToDisplay = Bitmap.createBitmap(
+                        originalBitmap,
+                        0,
+                        0,
+                        originalBitmap.width,
+                        originalBitmap.height,
+                        matrix,
+                        false
+                    )
 
                 } else {
                     bitmapToDisplay = null
@@ -240,15 +283,14 @@ class PersonFormActivity : AppCompatActivity() {
 
                 // Layout update
                 withContext(Dispatchers.Main) {
-                    if(bitmapToDisplay == null) {
+                    if (bitmapToDisplay == null) {
                         selfieView.setImageResource(R.drawable.placeholder_selfie)
                     } else {
                         selfieView.setImageBitmap(bitmapToDisplay)
                     }
                 }
             }
-        }
-        else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
@@ -265,5 +307,69 @@ class PersonFormActivity : AppCompatActivity() {
             else -> 0
         }
         return rotation
+    }
+
+    /**
+     * Create a person, student or worker with all informations in the form
+     */
+    private fun createPerson() {
+
+        if (nameField.text.isNotEmpty() && nameField.text.isNotBlank() &&
+            firstnameField.text.isNotEmpty() && firstnameField.text.isNotBlank() &&
+            birthdayField.text.isNotEmpty() &&
+            // TODO Check si spinner a une valeur sélectionnée
+            emailField.text.isNotEmpty() && emailField.text.isNotBlank()
+        ) {
+
+            when (occupationRadioGroup.checkedRadioButtonId) {
+                R.id.main_base_occupation_option_student -> {
+                    if (schoolField.text.isNotEmpty() && schoolField.text.isNotBlank() &&
+                        graduationYearField.text.isDigitsOnly()
+                    ) {
+                        person = Student(
+                            nameField.text.toString(),
+                            firstnameField.text.toString(),
+                            birthdayCalendar,
+                            // TODO Récupérer la valeur du spinner nationalitySpinner et enlever la ligne du dessous,
+                            "nationalite",
+                            schoolField.text.toString(),
+                            graduationYearField.text.toString().toInt(),
+                            emailField.text.toString(),
+                            remarksField.text.toString(),
+                            if(selfiePath.isNullOrEmpty()) null else selfiePath
+                        )
+
+                        Log.println(Log.DEBUG, "Creation", person.toString())
+                    } else {
+                        Toast.makeText(this, R.string.error_missing_field, Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                R.id.main_base_occupation_option_employee -> {
+                    if (companyField.text.isNotEmpty() && companyField.text.isNotBlank() &&
+                        specificExperienceField.text.isDigitsOnly()
+                    ) {
+                        person = Worker(
+                            nameField.text.toString(),
+                            firstnameField.text.toString(),
+                            birthdayCalendar,
+                            nationalitySpinner.toString(),
+                            companyField.text.toString(),
+                            // TODO Récuperer la valeur du spinner specificSectorSpinner et enlever la ligne du dessous,
+                            "sector",
+                            specificExperienceField.text.toString().toInt(),
+                            emailField.text.toString(),
+                            remarksField.text.toString(),
+                            if(selfiePath.isNullOrEmpty()) null else selfiePath
+                        )
+                        Log.println(Log.DEBUG, "Creation", person.toString())
+                    } else {
+                        Toast.makeText(this, R.string.error_missing_field, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        } else {
+            Toast.makeText(this, R.string.error_missing_field, Toast.LENGTH_LONG).show()
+        }
     }
 }
