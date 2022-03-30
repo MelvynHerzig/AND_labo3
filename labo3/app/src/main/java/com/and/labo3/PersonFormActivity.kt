@@ -5,8 +5,10 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.hardware.camera2.CameraCharacteristics
 import android.media.ExifInterface
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -179,6 +181,20 @@ class PersonFormActivity : AppCompatActivity() {
 
                     // Launching photo capture intent.
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                    takePictureIntent.putExtra("com.google.assistant.extra.USE_FRONT_CAMERA", true)
+                    takePictureIntent.putExtra("android.intent.extra.USE_FRONT_CAMERA", true)
+                    takePictureIntent.putExtra("android.intent.extras.LENS_FACING_FRONT", 1)
+                    takePictureIntent.putExtra("android.intent.extras.CAMERA_FACING", 1)
+
+                    // Samsung
+                    takePictureIntent.putExtra("camerafacing", "front")
+                    takePictureIntent.putExtra("previous_mode", "front")
+
+                    // Huawei
+                    takePictureIntent.putExtra("default_camera", "1")
+                    takePictureIntent.putExtra("default_mode", "com.huawei.camera2.mode.photo.PhotoMode")
+
+
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 }
             }
