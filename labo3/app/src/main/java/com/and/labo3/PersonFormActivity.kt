@@ -72,7 +72,7 @@ class PersonFormActivity : AppCompatActivity() {
                 { view, year, monthOfYear, dayOfMonth ->
 
                     // Display Selected date in textbox
-                    birthdayField.setText("$dayOfMonth.$monthOfYear.$year")
+                    birthdayField.setText("$dayOfMonth.${monthOfYear+1}.$year")
                     birthdayCalendar.set(Calendar.YEAR, year)
                     birthdayCalendar.set(Calendar.MONTH, monthOfYear)
                     birthdayCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
