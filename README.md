@@ -48,11 +48,11 @@ _TODO ALEC OU QUENTIN_
 
 En ce qui concerne l'API, [l'intent ACTION_IMAGE_CAPTURE du MediaStore](https://developer.android.com/reference/android/provider/MediaStore#ACTION_IMAGE_CAPTURE) n'en fait pas explicitement référence. 
 
-En cherchant sur internet, il s'avère possible d'ouvrir l'appareil grâce à des extras. Toutefois les solutions ont l'air de varier en fonction de la version de l'API android et du téléphone. 
+En cherchant sur internet, il s'avère possible d'ouvrir l'appareil grâce à des extras. Toutefois les solutions ont l'air de varier en fonction de la version de l'API Android et du téléphone. 
 
 Sur ce [site](https://localcoder.org/how-to-launch-front-camera-with-intent) divers solutions sont exposées. 
 
-La solution 3 a trés bien fonctionnée sur Android Galaxy S21 FE, API 32.
+La solution 3 a trés bien fonctionné sur Android Galaxy S21 FE avec l'API 32.
 
 ```
 Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
@@ -102,7 +102,65 @@ Cependant, cette solution a le désaventage d'être plus pénible à implémente
 
 <br>
 
-A essayer avec ça [poste](https://stackoverflow.com/questions/867518/how-to-make-an-android-spinner-with-initial-text-select-one)
+Pour répondre à cette question, nous nous sommes basés sur ce [poste](https://stackoverflow.com/a/12221309). Concrètement, la solution consiste à décorer un SpinnerAdapter par une classe personnalisée héritant de SpinnerAdapter.
+
+Pour distinguer l'option "Sélectionner" des réponses valides, nous avons créé un layout spécial pour cette option, spinner_row_nothing_select.xml: 
+```
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/empty_spinner_row"
+    style="?android:attr/spinnerItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/title"
+    android:textSize="12sp"
+    android:text="@string/empty_spinner" />
+```
+
+Pour décorer le SpinnerAdapter, il faut créer la classe NothingSelectedSpinnerAdapter dont l'implémentation complète est dans la référence ou dans le code source.
+
+Dans cette classe, il faut redéfinir les méthodes getView et getDropDownView:
+```
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        return if (position == 0) {
+            layoutInflater.inflate(nothingSelectedLayout, parent, false)
+        } else {
+            adapter.getView(position - EXTRA, convertView, parent)
+        }
+    }
+
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        return if (position == 0) {
+            View(context)
+        } else {
+            adapter.getDropDownView(position - EXTRA, null, parent)
+        }
+    }
+```
+
+De cette façon, "Sélectionner" est affiché par défaut. De plus, cette option a un layout personnalisé pour la différencier des autres. De plus, l'option par défaut n'apparait pas dans la liste déroulante. En conséquence, il devient impossible de la re-sélectionner. 
+
+Dans l'activité il suffit d'écrire:
+```
+    val adapter = ArrayAdapter.createFromResource(
+        this,
+        R.array.nationalities,
+        android.R.layout.simple_spinner_item
+    )
+
+    nationalitySpinner.adapter = NothingSelectedSpinnerAdapter(
+        adapter,
+        R.layout.spinner_row_nothing_selected,
+        this
+    )
+```
+
+Un adaptateur standard est créé puis il est décoré par notre adaptateur personnalisé.
+
+Finalement pour s'assurer que l'option par défaut n'est pas utilisée, il suffit de vérifier:
+```
+    nationalitySpinner.selectedItemId > -1
+```
 
 <br>
 

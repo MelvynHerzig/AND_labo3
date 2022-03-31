@@ -12,6 +12,8 @@
     <string name="main_base_occupation_student">Etudiant</string>
     <string name="main_base_occupation_worker">Employé</string>
 
+    <string name="empty_spinner">Sélectionner</string>
+
     <string-array name="nationalities" translatable="false">
         <item>@string/ch</item>
         <item>@string/fr</item>
@@ -19,7 +21,6 @@
         <item>@string/it</item>
     </string-array>
 
-    <string name="nationality_empty">Sélectionner</string>
     <string name="ch">Suisse</string>
     <string name="fr">Français</string>
     <string name="de">Allemand</string>
@@ -35,7 +36,6 @@
     <string name="main_specific_sector_title">Secteur</string>
     <string name="main_specific_experience_title">Expérience (années)</string>
 
-    <string name="sectors_empty">Sélectionner</string>
     <string-array name="sectors">
         <item>@string/agriculture</item>
         <item>@string/art</item>

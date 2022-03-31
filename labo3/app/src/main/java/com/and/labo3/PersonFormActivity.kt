@@ -7,13 +7,13 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.Group
 import androidx.core.content.FileProvider
 import androidx.core.text.isDigitsOnly
@@ -25,6 +25,7 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 /**
  * Mains activity to create student or employee
@@ -82,6 +83,10 @@ class PersonFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_form)
 
+
+        // ***************************************************************************************
+        // *                                   VIEW LINKING                                      *
+        // ***************************************************************************************
         okButton = findViewById(R.id.btn_ok)
         cancelButton = findViewById(R.id.btn_cancel)
 
@@ -106,10 +111,50 @@ class PersonFormActivity : AppCompatActivity() {
         nationalitySpinner = findViewById(R.id.main_base_nationality_spinner)
         specificSectorSpinner = findViewById(R.id.main_specific_sector_spinner)
 
+        // ***************************************************************************************
+        // *                               NATIONALITY SPINNER                                   *
+        // ***************************************************************************************
+
+        val baseAdapterNationalities = ArrayAdapter.createFromResource(
+            this,
+            R.array.nationalities,
+            android.R.layout.simple_spinner_item
+        )
+
+        nationalitySpinner.adapter = NothingSelectedSpinnerAdapter(
+            baseAdapterNationalities,
+            R.layout.spinner_row_nothing_selected,
+            this
+        )
+
+        // ***************************************************************************************
+        // *                               NATIONALITY SPINNER                                   *
+        // ***************************************************************************************
+
+        val baseAdapterSectors = ArrayAdapter.createFromResource(
+            this,
+            R.array.sectors,
+            android.R.layout.simple_spinner_item
+        )
+
+        specificSectorSpinner.adapter = NothingSelectedSpinnerAdapter(
+            baseAdapterSectors,
+            R.layout.spinner_row_nothing_selected,
+            this
+        )
+
+        // ***************************************************************************************
+        // *                                     OK BUTTON                                       *
+        // ***************************************************************************************
         okButton.setOnClickListener {
             createPerson()
+
+            val text = nationalitySpinner.selectedItemId
         }
 
+        // ***************************************************************************************
+        // *                                   CANCEL BUTTON                                     *
+        // ***************************************************************************************
         cancelButton.setOnClickListener {
             nameField.text.clear()
             firstnameField.text.clear()
@@ -128,10 +173,16 @@ class PersonFormActivity : AppCompatActivity() {
             //specificSectorSpinner.
         }
 
+        // ***************************************************************************************
+        // *                                      SELFIE                                         *
+        // ***************************************************************************************
         selfieView.setOnClickListener {
             dispatchTakePictureIntent()
         }
 
+        // ***************************************************************************************
+        // *                                     BIRTHDAY                                        *
+        // ***************************************************************************************
         birthdayImageButton.setOnClickListener {
 
             val dpd = DatePickerDialog(
@@ -152,6 +203,9 @@ class PersonFormActivity : AppCompatActivity() {
             dpd.show()
         }
 
+        // ***************************************************************************************
+        // *                             STUDENT & EMPLOYEE RADIO                                *
+        // ***************************************************************************************
         occupationRadioGroup.setOnCheckedChangeListener { _, id ->
 
             workersGroup.visibility = View.GONE
