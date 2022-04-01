@@ -10,8 +10,12 @@ Pour que le champ "remark" puisse contenir plusieurs lignes, il faut donner un "
 ```
 android:inputType="textMultiLine|text"
 ```
-Le retour à la ligne et le correcteur orthographique sont pris en compte dans la ligne ci-dessus.
-En ce qui concerne le fait que le champ prenne la taille nécessaire, il faut configurer le layout height pour qu'il contienne la valeur "wrap_content", comme ceci: <br/>
+Le retour à la ligne est possible grâce à l'option "textMultiLine" donnée comme "inputType".
+Le correcteur orthographique est également compris dans l'option "text", mais si l'on souhaite qu'il corrige automatiquement les erreurs, il faut ajouter l'option "textAutoCorrect" au champ "inputType", comme ceci: 
+```
+android:inputType="textMultiLine|textAutoCorrect|text"
+```
+En ce qui concerne le fait que le champ prenne la taille nécessaire, il faut configurer le "layout_height" pour qu'il contienne la valeur "wrap_content", comme ceci: <br/>
 ```
 android:layout_height="wrap_content"
 ```
@@ -27,6 +31,7 @@ android:scrollHorizontally="false"
 
 On peut retrouver certains informations utilisées pour répondre à cette question sous le lien suivant de la doc officiel:
 https://developer.android.com/reference/android/text/InputType
+https://developer.android.com/training/keyboard-input/style
 
 <br>
 <hr>
