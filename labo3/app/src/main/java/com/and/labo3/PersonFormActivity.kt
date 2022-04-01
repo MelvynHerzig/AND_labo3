@@ -148,8 +148,6 @@ class PersonFormActivity : AppCompatActivity() {
         // ***************************************************************************************
         okButton.setOnClickListener {
             createPerson()
-
-            val text = nationalitySpinner.selectedItemId
         }
 
         // ***************************************************************************************
@@ -168,9 +166,8 @@ class PersonFormActivity : AppCompatActivity() {
 
             occupationRadioGroup.clearCheck()
 
-            // TODO Remettre spinner a la valeur de base
-            //nationalitySpinner.
-            //specificSectorSpinner.
+            nationalitySpinner.setSelection(0)
+            specificSectorSpinner.setSelection(0)
         }
 
         // ***************************************************************************************
@@ -371,7 +368,7 @@ class PersonFormActivity : AppCompatActivity() {
         if (nameField.text.isNotEmpty() && nameField.text.isNotBlank() &&
             firstnameField.text.isNotEmpty() && firstnameField.text.isNotBlank() &&
             birthdayField.text.isNotEmpty() &&
-            // TODO Check si spinner a une valeur sélectionnée
+            nationalitySpinner.selectedItemId > -1 &&
             emailField.text.isNotEmpty() && emailField.text.isNotBlank()
         ) {
 
@@ -384,8 +381,7 @@ class PersonFormActivity : AppCompatActivity() {
                             nameField.text.toString(),
                             firstnameField.text.toString(),
                             birthdayCalendar,
-                            // TODO Récupérer la valeur du spinner nationalitySpinner et enlever la ligne du dessous,
-                            "nationalite",
+                            nationalitySpinner.selectedItem.toString(),
                             schoolField.text.toString(),
                             graduationYearField.text.toString().toInt(),
                             emailField.text.toString(),
@@ -401,7 +397,8 @@ class PersonFormActivity : AppCompatActivity() {
 
                 R.id.main_base_occupation_option_employee -> {
                     if (companyField.text.isNotEmpty() && companyField.text.isNotBlank() &&
-                        specificExperienceField.text.isDigitsOnly()
+                        specificExperienceField.text.isDigitsOnly() &&
+                        specificSectorSpinner.selectedItemId > -1
                     ) {
                         person = Worker(
                             nameField.text.toString(),
@@ -409,8 +406,7 @@ class PersonFormActivity : AppCompatActivity() {
                             birthdayCalendar,
                             nationalitySpinner.toString(),
                             companyField.text.toString(),
-                            // TODO Récuperer la valeur du spinner specificSectorSpinner et enlever la ligne du dessous,
-                            "sector",
+                            specificSectorSpinner.selectedItem.toString(),
                             specificExperienceField.text.toString().toInt(),
                             emailField.text.toString(),
                             remarksField.text.toString(),
