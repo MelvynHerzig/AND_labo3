@@ -442,7 +442,7 @@
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:hint="@string/additional_remarks_title"
-            android:inputType="textMultiLine|text"
+            android:inputType="textMultiLine|textAutoCorrect|text"
             android:overScrollMode="always"
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
