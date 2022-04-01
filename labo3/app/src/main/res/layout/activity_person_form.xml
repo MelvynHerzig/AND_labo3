@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:layout_margin="10dp"
+    android:fillViewport="true"
     tools:context=".PersonFormActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -266,7 +266,7 @@
             android:id="@+id/group_specific_workers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="visible"
             app:constraint_referenced_ids="main_specific_workers_title,
             main_specific_company_title,
             main_specific_sector_title,
@@ -392,9 +392,9 @@
             android:id="@+id/additional_email_field"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:autofillHints="emailAddress"
+            android:autofillHints=""
             android:hint="@string/additional_email_title"
-            android:inputType=" textEmailAddress"
+            android:inputType="textEmailAddress"
             android:textColor="@color/title"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -416,12 +416,13 @@
             android:id="@+id/additional_picture_image"
             android:layout_width="225dp"
             android:layout_height="225dp"
+            android:contentDescription="@string/additional_picture_title"
+            android:scaleType="centerCrop"
             android:src="@drawable/placeholder_selfie"
             app:flow_horizontalAlign="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/additional_picture_title"
-            android:scaleType="centerCrop" />
+            app:layout_constraintTop_toBottomOf="@id/additional_picture_title" />
 
         <TextView
             android:id="@+id/additional_remarks_title"
@@ -431,13 +432,14 @@
             android:text="@string/additional_remarks_title"
             android:textColor="@color/title"
             android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/additional_picture_image" />
 
         <EditText
             android:id="@+id/additional_remarks_field"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:autofillHints=""
             android:hint="@string/additional_remarks_title"
             android:inputType="textMultiLine|text"
@@ -448,6 +450,8 @@
             android:textColor="@color/title"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/btn_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/additional_remarks_title" />
 
         <Button
