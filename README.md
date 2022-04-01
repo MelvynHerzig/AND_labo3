@@ -6,7 +6,20 @@
 
 <br>
 
-_TODO ALEC OU QUENTIN_
+Pour que le champ "remark" puisse contenir plusieurs lignes, il faut donner un "inputType" précis, le voici: 
+> android:inputType="textMultiLine|text"
+Le retour à la ligne et le correcteur orthographique sont pris en compte dans la ligne ci-dessus.
+En ce qui concerne le fait que le champ prenne la taille nécessaire, il faut configurer le layout height pour qu'il contienne la valeur "wrap_content", comme ceci:
+> android:layout_height="wrap_content"
+Ceci permettra de faire grandir le champ texte au fur et à mesure que les lignes s'incrémente lors de l'écriture du texte.
+Il ne faut cependant pas sous-estimer la bonne gestion des contraintes du champ "EditText".
+Il peut également être intéressant d'ajouter des scrollbar pour le champ texte, voici comment le faire:
+```
+android:overScrollMode="always"
+android:scrollbarStyle="insideInset"
+android:scrollbars="vertical"
+android:scrollHorizontally="false"
+```
 
 <br>
 <hr>
