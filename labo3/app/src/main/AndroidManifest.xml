@@ -13,7 +13,8 @@
         android:theme="@style/Theme.Labo3">
         <activity
             android:name=".PersonFormActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
