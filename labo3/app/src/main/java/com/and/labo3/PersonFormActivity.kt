@@ -24,6 +24,9 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.*
 
 
@@ -39,7 +42,7 @@ class PersonFormActivity : AppCompatActivity() {
     /**
      * Path of the image saved when taking the selfie.
      */
-    private var selfiePath : String? = null
+    private var selfiePath: String? = null
 
     /**
      * Reference on the image view to display selfie
@@ -73,6 +76,8 @@ class PersonFormActivity : AppCompatActivity() {
 
     private lateinit var birthdayImageButton: ImageButton
 
+    private lateinit var studentRadioButton: RadioButton
+    private lateinit var workerRadioButton: RadioButton
     private lateinit var occupationRadioGroup: RadioGroup
 
     private lateinit var nationalitySpinner: Spinner
@@ -102,6 +107,9 @@ class PersonFormActivity : AppCompatActivity() {
 
         studentsGroup = findViewById(R.id.group_specific_students)
         workersGroup = findViewById(R.id.group_specific_workers)
+
+        studentRadioButton = findViewById(R.id.main_base_occupation_option_student)
+        workerRadioButton = findViewById(R.id.main_base_occupation_option_employee)
         occupationRadioGroup = findViewById(R.id.main_base_occupation_options)
 
         selfieView = findViewById(R.id.additional_picture_image)
@@ -128,7 +136,7 @@ class PersonFormActivity : AppCompatActivity() {
         )
 
         // ***************************************************************************************
-        // *                               NATIONALITY SPINNER                                   *
+        // *                               SECTORS SPINNER                                   *
         // ***************************************************************************************
 
         val baseAdapterSectors = ArrayAdapter.createFromResource(
@@ -154,20 +162,7 @@ class PersonFormActivity : AppCompatActivity() {
         // *                                   CANCEL BUTTON                                     *
         // ***************************************************************************************
         cancelButton.setOnClickListener {
-            nameField.text.clear()
-            firstnameField.text.clear()
-            birthdayField.text.clear()
-            schoolField.text.clear()
-            graduationYearField.text.clear()
-            companyField.text.clear()
-            specificExperienceField.text.clear()
-            emailField.text.clear()
-            remarksField.text.clear()
-
-            occupationRadioGroup.clearCheck()
-
-            nationalitySpinner.setSelection(0)
-            specificSectorSpinner.setSelection(0)
+            clearForm()
         }
 
         // ***************************************************************************************
@@ -186,11 +181,12 @@ class PersonFormActivity : AppCompatActivity() {
                 this,
                 { view, year, monthOfYear, dayOfMonth ->
 
+                    val date = LocalDate.of(year, monthOfYear, dayOfMonth)
                     // Display Selected date in textbox
-                    birthdayField.setText("$dayOfMonth.${monthOfYear + 1}.$year")
                     birthdayCalendar.set(Calendar.YEAR, year)
                     birthdayCalendar.set(Calendar.MONTH, monthOfYear)
                     birthdayCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                    birthdayField.setText(date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)))
                 },
                 birthdayCalendar.get(Calendar.YEAR),
                 birthdayCalendar.get(Calendar.MONTH),
@@ -215,6 +211,23 @@ class PersonFormActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun clearForm() {
+        nameField.text.clear()
+        firstnameField.text.clear()
+        birthdayField.text.clear()
+        schoolField.text.clear()
+        graduationYearField.text.clear()
+        companyField.text.clear()
+        specificExperienceField.text.clear()
+        emailField.text.clear()
+        remarksField.text.clear()
+
+        occupationRadioGroup.clearCheck()
+
+        nationalitySpinner.setSelection(0)
+        specificSectorSpinner.setSelection(0)
     }
 
     /**
@@ -386,7 +399,7 @@ class PersonFormActivity : AppCompatActivity() {
                             graduationYearField.text.toString().toInt(),
                             emailField.text.toString(),
                             remarksField.text.toString(),
-                            if(selfiePath.isNullOrEmpty()) null else selfiePath
+                            if (selfiePath.isNullOrEmpty()) null else selfiePath
                         )
 
                         Log.println(Log.DEBUG, "Creation", person.toString())
@@ -404,13 +417,13 @@ class PersonFormActivity : AppCompatActivity() {
                             nameField.text.toString(),
                             firstnameField.text.toString(),
                             birthdayCalendar,
-                            nationalitySpinner.toString(),
+                            nationalitySpinner.selectedItem.toString(),
                             companyField.text.toString(),
                             specificSectorSpinner.selectedItem.toString(),
                             specificExperienceField.text.toString().toInt(),
                             emailField.text.toString(),
                             remarksField.text.toString(),
-                            if(selfiePath.isNullOrEmpty()) null else selfiePath
+                            if (selfiePath.isNullOrEmpty()) null else selfiePath
                         )
                         Log.println(Log.DEBUG, "Creation", person.toString())
                     } else {
@@ -422,4 +435,79 @@ class PersonFormActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.error_missing_field, Toast.LENGTH_LONG).show()
         }
     }
+
+    /**
+     * Load a person in the right form
+     */
+    private fun loadPerson(person: Person) {
+        clearForm()
+
+        when (person) {
+            is Student -> loadStudent(person)
+            is Worker -> loadWorker(person)
+        }
+
+        nameField.setText(person.name)
+        firstnameField.setText(person.firstName)
+        emailField.setText(person.email)
+        birthdayCalendar = person.birthDay
+        val date = LocalDate.of(
+            birthdayCalendar.get(Calendar.YEAR),
+            birthdayCalendar.get(Calendar.MONTH),
+            birthdayCalendar.get(Calendar.DAY_OF_MONTH)
+        )
+        birthdayField.setText(date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)))
+
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.nationalities,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        nationalitySpinner.setAdapter(adapter)
+        val spinnerPosition = adapter.getPosition(person.nationality)
+        nationalitySpinner.setSelection(spinnerPosition)
+
+        remarksField.setText(person.remark)
+        selfiePath = person.picturePath
+
+        val bitmap: Bitmap? = BitmapFactory.decodeFile(selfiePath)
+        if (bitmap == null) {
+            selfieView.setImageResource(R.drawable.placeholder_selfie)
+        } else {
+            selfieView.setImageBitmap(bitmap)
+        }
+    }
+
+    /**
+     * Load student's information in student's form
+     */
+    private fun loadStudent(student: Student) {
+
+        occupationRadioGroup.check(R.id.main_base_occupation_option_student)
+        schoolField.setText(student.university)
+        graduationYearField.setText("${student.graduationYear}")
+    }
+
+    /**
+     * Load worker's information in worker's form
+     */
+    private fun loadWorker(worker: Worker) {
+        occupationRadioGroup.check(R.id.main_base_occupation_option_employee)
+
+        companyField.setText(worker.company)
+
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.sectors,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        specificSectorSpinner.setAdapter(adapter)
+        val spinnerPosition = adapter.getPosition(worker.sector)
+        specificSectorSpinner.setSelection(spinnerPosition)
+
+        specificExperienceField.setText("${worker.experienceYear}")
+    }
+
 }

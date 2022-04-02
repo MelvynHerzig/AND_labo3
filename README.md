@@ -40,20 +40,37 @@ https://developer.android.com/training/keyboard-input/style
 
 <br>
 
-_TODO ALEC OU QUENTIN_
+Il est possible d'utiliser un DateTimeFormatter, ainsi qu'un FormatStyle afin d'obtenir la bonne notation en fonction de la région.
+Voir https://www.baeldung.com/java-datetimeformatter#formatStyle
 
 * A) Si vous avez utilisé le DatePickerDialog1 du SDK. En cas de rotation de l’écran du
 smartphone lorsque le dialogue est ouvert, une exception android.view.WindowLeaked
 sera présente dans les logs, à quoi est-elle dûe ?
 
-    * _TODO ALEC OU QUENTIN_
+    Lors qu'une dialog est créé, il est ajouté au WindowManager. Le problème est que lorsqu'on change d'orientation, l'activité est recréé. Cependant le dialogue lui est lié à la première activité, avant sa recréation. Le dialogue est donc maintenant inaccesible, et il y a donc une fuite de mémoire.
 
 <br>
 
 * B) Si vous avez utilisé le MaterialDatePicker2 de la librairie Material. Est-il possible de limiter les dates sélectionnables dans le dialogue, en particulier pour une date de naissance il est peu probable d’avoir une personne née il y a plus de 110 ans ou à une date dans le futur.
 Comment pouvons-nous mettre cela en place ?
 
-    * _TODO ALEC OU QUENTIN_
+    Il est possible d'ajouter des contraintes au MaterialDatePicker. On pourrait donc imaginer créer 2 dates, la date la plus vieille possible, et la date la plus récente possible. 
+
+
+
+        val constraints =CalendarConstraints.Builder()
+        .setStart(startFrom)
+        .setEnd(upTo)
+        .build()
+
+    Puis créer le DatePicker
+        
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+        .setCalendarConstraints(constraints)
+        .setTitleText("title")
+        .build()    
+
+
 
 <br>
 <hr>
@@ -62,7 +79,10 @@ Comment pouvons-nous mettre cela en place ?
 
 <br>
 
-_TODO ALEC OU QUENTIN_
+Il est possible de spécifier le prochain champ à saisir dans le layout, à l'aide de l'instruction android:imeOptions. Il faudra ensuite réceptionner l'événement dans le code afin de définir le focus sur le prochaine élément souhaité.
+
+Pour que le bouton soit lié au bouton de validation du questionnaire, il existe l'option imeOptions="actionDone", qui permettrait de changer l'icône en un vu, cependant il faudrait également récupérer l'événement dans le code et effectuer la logique souhaitée
+
 
 <br>
 <hr>
